@@ -1,45 +1,85 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { Gift } from "lucide-react"
+import { Gift, Sparkles } from "lucide-react"
 import Button from "../Button"
 
 export default function IntroScreen({ onNext }) {
+    const [loaded, setLoaded] = useState(false)
+
     return (
-        <motion.div
-            className="bg-[#fff8fc] p-7 rounded-[60px] drop-shadow-2xl  min-w-48 w-full max-w-110 relative flex flex-col items-center gap-4"
-        >
-            <div className="relative h-44 md:h-52 bg-linear-to-b from-white/80 to-pink-200 w-full rounded-[40px] flex items-end justify-center shadow-inner">
-                <img
-                    loading="lazy"
-                    src="/gifs/intro.gif"
-                    alt="Cute"
-                    className="w-26 md:w-32"
-                />
-            </div>
+        <div className="fixed inset-0 w-full h-full z-10 bg-black">
 
-            <div className="text-center">
-                <h1 className="text-2xl md:text-3xl font-semibold text-primary drop-shadow leading-tight will-change-transform"
-                    style={{
-                        filter: "drop-shadow(0 0 20px rgba(255,105,180,0.4))",
-                    }}>
-                    A Cutiepie was born today, 21 years ago!
-                </h1>
-                <p className="mt-4 text-foreground will-change-transform">Yes, it’s YOU! A little surprise awaits...</p>
-            </div>
+            {/* Background image with fade-in */}
+            <motion.img
+                src="/images/1.png"
+                alt="Birthday Girl"
+                onLoad={() => setLoaded(true)}
+                initial={{ opacity: 0, scale: 1.05, filter: "blur(12px)" }}
+                animate={loaded ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="absolute inset-0 w-full h-full object-cover will-change-transform"
+            />
 
-            <div
-                className="mt-4">
-                <Button
-                    onClick={() => {
-                        onNext?.()
-                    }}
-                    className="bg-[#f1caeb] text-primary"
+            {/* Gradient overlay */}
+            <motion.div
+                className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/85"
+                initial={{ opacity: 0 }}
+                animate={loaded ? { opacity: 1 } : {}}
+                transition={{ duration: 1, delay: 0.3 }}
+            />
+
+            {/* Top badge */}
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={loaded ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.8, duration: 0.7 }}
+                className="absolute top-8 left-0 right-0 flex justify-center z-10"
+            >
+                <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-semibold text-white border border-white/30">
+                    <Sparkles size={12} />
+                    A Birthday Surprise
+                    <Sparkles size={12} />
+                </div>
+            </motion.div>
+
+            {/* Floating emojis */}
+            {["🎉", "🎊", "✨", "🎈"].map((e, i) => (
+                <motion.span
+                    key={i}
+                    className="absolute text-3xl pointer-events-none select-none z-10"
+                    style={{ left: `${[6, 80, 14, 74][i]}%`, top: `${[14, 12, 78, 76][i]}%` }}
+                    initial={{ opacity: 0 }}
+                    animate={loaded ? { opacity: 1, y: [0, -12, 0], rotate: [-5, 5, -5] } : {}}
+                    transition={{ duration: 2.5 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: 1 + i * 0.3 }}
                 >
-                    <Gift size={20} />
-                    Start the surprise
+                    {e}
+                </motion.span>
+            ))}
+
+            {/* Bottom content */}
+            <motion.div
+                className="absolute bottom-0 left-0 right-0 z-10 px-7 pb-12 pt-20 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex flex-col items-center gap-5"
+                initial={{ opacity: 0, y: 40 }}
+                animate={loaded ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.9, duration: 0.8, ease: "easeOut" }}
+            >
+                <div className="text-center">
+                    <span className="text-xs font-semibold tracking-widest text-white/60 uppercase">Today is your day</span>
+                    <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mt-1 drop-shadow-lg">
+                        A Cutiepie was born,<br />21 years ago! 🥳
+                    </h1>
+                    <p className="text-white/80 text-sm md:text-base mt-3 leading-relaxed">
+                        Yes, it is <span className="font-bold text-white">YOU!</span> A little surprise has been crafted with love, just for you. 🎁
+                    </p>
+                </div>
+
+                <Button onClick={() => onNext?.()} className="bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-900/50">
+                    <Gift size={18} />
+                    Start the Surprise
                 </Button>
-            </div>
-        </motion.div >
+            </motion.div>
+        </div>
     )
 }

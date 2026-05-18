@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdf7ff;
-  --foreground: #77537e;
-  --primary: #973b88;
-  --secondary: #9b3c49;
-  --accent: #594ba0;
+  --background: #f5f0ff;
+  --foreground: #5b4b8a;
+  --primary: #7c3aed;
+  --secondary: #6d28d9;
+  --accent: #4c1d95;
 }
 
 @theme inline {
@@ -14,8 +14,16 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-lato: var(--font-lato);
+  --font-playfair: var(--font-playfair);
+}
+
+body {
+  font-family: var(--font-lato), sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-playfair), serif;
 }
 
 button {
@@ -72,26 +80,25 @@ button {
 
 .cake {
   position: relative;
-  width: 220px;
-  height: 170px;
+  width: 154px;
+  height: 119px;
   top: 50%;
   left: 50%;
-  margin-left: -110px;
+  margin-left: -77px;
 }
 
 .plate {
-  width: 240px;
-  height: 100px;
+  width: 168px;
+  height: 70px;
   position: absolute;
-  bottom: -30px;
-  left: -10px;
+  bottom: -21px;
+  left: -7px;
   border-radius: 50%;
   background-color: #f9f9f9;
   box-shadow:
     0 2px 0 #e0e0e0,
     0 4px 0 #d0d0d0,
     0 5px 30px rgba(0, 0, 0, 0.25);
-
 }
 
 .cake>* {
@@ -101,106 +108,100 @@ button {
 .layer {
   position: absolute;
   display: block;
-  width: 220px;
-  height: 90px;
+  width: 154px;
+  height: 63px;
   border-radius: 50%;
-  background-color: #f7c1cf;
+  background-color: #fde68a;
   box-shadow:
-    0 2px 0 #f4b6c5,
-    0 4px 0 #f1acbb,
-    0 6px 0 #eea1b1,
-    0 8px 0 #eb97a7,
-    0 10px 0 #e88d9d,
-    0 12px 0 #e58393,
-    0 14px 0 #e27989,
-    0 16px 0 #df707f,
-    0 18px 0 #dc6676,
-    0 20px 0 #d95c6d,
-    0 22px 0 #d65264,
-    0 24px 0 #d3485b,
-    0 26px 0 #cf3f53,
-    0 28px 0 #cb3a4f,
-    0 30px 0 #c6354b;
+    0 2px 0 #fcd34d,
+    0 4px 0 #fbbf24,
+    0 6px 0 #f59e0b,
+    0 8px 0 #f59e0b,
+    0 10px 0 #d97706,
+    0 12px 0 #d97706,
+    0 14px 0 #b45309,
+    0 16px 0 #b45309,
+    0 18px 0 #92400e,
+    0 20px 0 #92400e,
+    0 21px 0 #521e04;
 }
-
-
 
 .layer-top {
   top: 0px;
 }
 
 .layer-middle {
-  top: 33px;
+  top: 23px;
 }
 
 .layer-bottom {
-  top: 66px;
+  top: 46px;
 }
 
 .icing {
   top: 1px;
-  left: 3px;
-  background-color: #fff3e6;
-  width: 215px;
-  height: 90px;
+  left: 2px;
+  background-color: #fffbeb;
+  width: 150px;
+  height: 63px;
   border-radius: 50%;
 }
 
 .icing:before {
   content: "";
   position: absolute;
-  top: 4px;
-  right: 5px;
-  bottom: 6px;
-  left: 5px;
-  background-color: #f5ead8;
+  top: 3px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  background-color: #fef3c7;
   box-shadow:
-    0 0 4px #f7eee0,
-    0 0 4px #f7eee0,
-    0 0 4px #f7eee0;
+    0 0 4px #fde68a,
+    0 0 4px #fde68a,
+    0 0 4px #fde68a;
   border-radius: 50%;
   z-index: 1;
 }
 
 .drip {
   display: block;
-  width: 46px;
-  height: 60px;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  background-color: #f0e4d0;
+  width: 32px;
+  height: 42px;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  background-color: #fde68a;
 }
 
 .drip1 {
-  top: 53px;
-  left: 5px;
+  top: 37px;
+  left: 4px;
   transform: skewY(15deg);
-  height: 48px;
-  width: 36px;
+  height: 34px;
+  width: 25px;
 }
 
 .drip2 {
-  top: 55px;
-  left: 161px;
+  top: 38px;
+  left: 113px;
   transform: skewY(-25deg);
 }
 
 .drip3 {
-  top: 54px;
-  left: 80px;
-  width: 70px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  top: 38px;
+  left: 56px;
+  width: 49px;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
 }
 
 .candle {
-  background-color: #ff8fab;
-  width: 16px;
-  height: 50px;
-  border-radius: 8px / 4px;
-  top: -20px;
+  background-color: #fb923c;
+  width: 11px;
+  height: 35px;
+  border-radius: 6px / 3px;
+  top: -14px;
   left: 50%;
-  margin-left: -8px;
+  margin-left: -5.5px;
   z-index: 10;
 }
 
@@ -209,10 +210,10 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  width: 16px;
-  height: 8px;
+  width: 11px;
+  height: 6px;
   border-radius: 50%;
-  background-color: #da6f8a;
+  background-color: #ea580c;
 }
 
 .flame {
@@ -232,6 +233,19 @@ button {
     0 0 80px rgba(255, 165, 0, 0.5);
   transform-origin: 50% 90%;
   animation: flicker 1s ease-in-out alternate infinite;
+}
+
+.smoke {
+  position: absolute;
+  width: 10px;
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(180,180,180,0.7) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -22px;
+  left: 50%;
+  margin-left: -5px;
+  z-index: 11;
+  transform-origin: bottom center;
 }
 
 ::-webkit-scrollbar {

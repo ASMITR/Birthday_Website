@@ -1,13 +1,15 @@
-import { Comfortaa, Shantell_Sans } from "next/font/google";
+import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
 
-const comfortaa = Comfortaa({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400", "600", "700"],
+  variable: "--font-playfair",
 });
-const shantell = Shantell_Sans({
+const lato = Lato({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "700"],
+  variable: "--font-lato",
 });
 
 export const metadata = {
@@ -18,8 +20,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/images/1.png" />
+      </head>
       <body
-        className={`${shantell.className} antialiased bg-background select-none`}
+        className={`${playfair.variable} ${lato.variable} font-lato antialiased bg-background select-none`}
       >
         {children}
       </body>
